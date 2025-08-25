@@ -15,7 +15,6 @@ def word_search(grid):
             return False
         if idx == len(word) - 1:
             return True
-
         return dfs(r + dr, c + dc, dr, dc, idx + 1)
 
     count = 0
