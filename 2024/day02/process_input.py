@@ -3,7 +3,7 @@ input = []
 
 def get_input():
     with open(
-        "/Users/vineethrajesh/Projects/Advent-of-Code/2024/day02/INPUT.txt"
+        "/Users/vineethrajesh/Projects/Advent-of-Code/2024/day02/DEMO.txt"
     ) as file:
         s = file.read().strip()
 
