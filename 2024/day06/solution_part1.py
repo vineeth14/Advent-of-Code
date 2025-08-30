@@ -22,6 +22,7 @@ while True:
         break
     if grid[r + dr][c + dc] == "#":
         dr, dc = dc, -dr
-    r = r + dr
-    c = c + dc
+    else:
+        r = r + dr
+        c = c + dc
 print(len(visit))
