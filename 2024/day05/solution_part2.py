@@ -63,7 +63,7 @@ def reorder_list_dfs(input, adj):
         if page not in visit:
             if not dfs(page):
                 return []
-    # the result is in postorder, the dependencies are added before their dependents
+    # the result is in postorder,
     return res[::-1]
 
 
@@ -88,51 +88,3 @@ def reorder_list(input, adj):
 
 prerequisites, input = get_input()
 page_ordering_rules(prerequisites, input)
-
-
-"""
-    DFS(97):
-  - 97 not in visit, not in cycle
-  - Add 97 to cycle: cycle = {97}
-  - 97 has dependency: 75 (from adj[97] = {75})
-  - Call DFS(75)
-  
-    DFS(75):
-      - 75 not in visit, not in cycle  
-      - Add 75 to cycle: cycle = {97, 75}
-      - 75 has dependency: 47
-      - Call DFS(47)
-      
-        DFS(47):
-          - Add 47 to cycle: cycle = {97, 75, 47}
-          - 47 has dependency: 61
-          - Call DFS(61)
-          
-            DFS(61):
-              - Add 61 to cycle: cycle = {97, 75, 47, 61}
-              - 61 has dependency: 53
-              - Call DFS(53)
-              
-                DFS(53):
-                  - Add 53 to cycle: cycle = {97, 75, 47, 61, 53}
-                  - 53 has no dependencies
-                  - Remove 53 from cycle: cycle = {97, 75, 47, 61}
-                  - Add 53 to visit: visit = {53}
-                  - result.append(53): result = [53]  ← FIRST TO BE ADDED
-                  
-              - Back in DFS(61): 53 is done
-              - Remove 61 from cycle, add to visit
-              - result.append(61): result = [53, 61]  ← SECOND
-              
-          - Back in DFS(47): 61 is done
-          - Remove 47 from cycle, add to visit  
-          - result.append(47): result = [53, 61, 47]  ← THIRD
-          
-      - Back in DFS(75): 47 is done
-      - Remove 75 from cycle, add to visit
-      - result.append(75): result = [53, 61, 47, 75]  ← FOURTH
-      
-  - Back in DFS(97): 75 is done
-  - Remove 97 from cycle, add to visit
-  - result.append(97): result = [53, 61, 47, 75, 97]  ← LAST
-"""

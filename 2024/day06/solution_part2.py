@@ -9,6 +9,8 @@ for r in range(rl):
         if grid[r][c] == "^":
             gr, gc = r, c
 
+# Use the direction and if the current position is in the visit set to know if you are in a loop.
+
 
 def is_loop(grid, gr, gc):
     visit = set()

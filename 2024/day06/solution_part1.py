@@ -4,7 +4,7 @@ grid = get_input()
 rl, cl = len(grid), len(grid[0])
 
 # if the direction causes you to go out of bounds that change a flag
-# if you come across an obstacle chnage the direction to be 90 degrees
+# if you come across an obstacle change the direction to be 90 degrees
 
 count = [0]
 for r in range(rl):
