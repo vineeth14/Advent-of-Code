@@ -26,4 +26,3 @@ for target, input in input_map.items():
     for row in input:
         if backtrack(0, row[0], row, target):
             res += target
-print(res)

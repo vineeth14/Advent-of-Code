@@ -2,8 +2,6 @@ from process_input import get_input
 
 input_map = get_input()
 
-res, sol = [], []
-
 
 def backtrack(idx, curTotal, input, target):
     if idx == len(input) - 1 and curTotal == target:
