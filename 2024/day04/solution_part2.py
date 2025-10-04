@@ -1,6 +1,8 @@
 from process_input import get_input
 
 
+# for each 'A' check the diagonals for the correct string
+# the for loop while calling is something I missed. It simplifies the code and boundary checks.
 def word_search_mas(grid):
     rl, cl = len(grid), len(grid[0])
 

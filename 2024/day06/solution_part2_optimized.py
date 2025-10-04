@@ -9,9 +9,22 @@ for r in range(rl):
         if grid[r][c] == "^":
             gr, gc = r, c
 
-# Use the direction and if the current position is in the visit set to know if you are in a loop.
-# Literally try placing an obstacle at every possible position and then check if a loop occurs
-# if position has been visited before with same direction then loop occurs
+# An obstacle can only create a loop if placed in guards original path
+# First get the original path and add to set. Then only place obstacles if in path
+
+guards_path = set()
+
+dr, dc = -1, 0
+r, c = gr, gc
+while True:
+    guards_path.add((r, c))
+    if r + dr not in range(rl) or c + dc not in range(cl):
+        break
+    if grid[r + dr][c + dc] == "#":
+        dr, dc = dc, -dr
+    else:
+        r = r + dr
+        c = c + dc
 
 
 def is_loop(grid, gr, gc):
@@ -36,10 +49,11 @@ def stuck_in_a_loop(grid, gr, gc):
         for c in range(cl):
             if grid[r][c] != ".":
                 continue
-            grid[r][c] = "#"
-            if is_loop(grid, gr, gc):
-                count += 1
-            grid[r][c] = "."
+            if (r, c) in guards_path:
+                grid[r][c] = "#"
+                if is_loop(grid, gr, gc):
+                    count += 1
+                grid[r][c] = "."
     print(count)
 
 

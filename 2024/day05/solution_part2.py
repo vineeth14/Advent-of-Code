@@ -50,6 +50,8 @@ def reorder_list_dfs(input, adj):
 
         # Visit all dependencies first
         for next_page in adj[page]:
+            # You're only recursing on pages that are in the current input list. So even though adj[page] might contain many prerequisites,
+            # you filter to only those that are relevant to the current update sequence.
             if next_page in input:
                 if not dfs(next_page):
                     return False
