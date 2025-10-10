@@ -9,15 +9,14 @@ visit = set()
 q = collections.deque()
 
 
-def bfs(r, c, area, peri):
+def bfs(r, c, area):
     while q:
         for i in range(len(q)):
             r, c = q.popleft()
             visit.add((r, c))
 
             area += 1
-            if isCorner(r, c):
-                sides += 1
+            sides += cornerCount(r, c)
             for dr, dc in directions:
                 nr, nc = dr + r, dc + c
                 if (
@@ -28,7 +27,12 @@ def bfs(r, c, area, peri):
                 ):
                     q.append((nr, nc))
                     visit.add((nr, nc))
-    return area, peri
+    return area
+
+
+def isCorner(r, c):
+    count = 4
+    if grid
 
 
 total = 0
@@ -36,7 +40,4 @@ for r in range(rl):
     for c in range(cl):
         if (r, c) not in visit:
             q.append((r, c))
-            area, peri = bfs(r, c, 0, 0)
-            print(area, peri, grid[r][c])
-            total += area * peri
 print(total)

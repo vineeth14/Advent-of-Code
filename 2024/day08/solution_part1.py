@@ -11,7 +11,8 @@ for r in range(rl):
         if grid[r][c] != ".":
             antennas[grid[r][c]].append((r, c))
 
-#  The key insight is that antinodes form by extending the line between two antennas. Think of it as: if you have two points and draw a line through them, the
+#  The key insight is that antinodes form by extending the line between two antennas.
+#  Think of it as: if you have two points and draw a line through them, the
 #  antinodes are at equal distances on either side, making the original antennas the "middle third" of a larger line segment.
 
 
