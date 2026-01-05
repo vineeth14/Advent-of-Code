@@ -1,7 +1,7 @@
 def get_input():
     res = []
     with open(
-        "/Users/vineethrajesh/Projects/Advent-of-Code/2025/day01/input.txt"
+        "/Users/vineethrajesh/Projects/Advent-of-Code/2025/day01/demo.txt"
     ) as file:
         lines = file.read().splitlines()
         for line in lines:

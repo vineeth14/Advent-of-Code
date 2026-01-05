@@ -7,7 +7,6 @@ def get_password():
     count = 0
     for rotation in input:
         end = (end + rotation) % 100
-        print(end)
         if end == 0:
             count += 1
     print(count)
