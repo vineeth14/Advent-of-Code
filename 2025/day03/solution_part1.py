@@ -6,7 +6,8 @@ import heapq
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-def get_input(filename = "input.txt"):
+
+def get_input(filename="input.txt"):
     filepath = os.path.join(BASE_DIR, filename)
     number_strings = []
     with open(filepath) as f:
@@ -14,24 +15,26 @@ def get_input(filename = "input.txt"):
             number_strings.append(line.strip())
     return number_strings
 
-def calculate_joltage(digit_string:str):
+
+def calculate_joltage(digit_string: str):
     string_length = len(digit_string)
     max_heap = []
     result = ""
 
-    for i in range(string_length-1):
-        heapq.heappush(max_heap, (-1*int(digit_string[i]), i))
+    for i in range(string_length - 1):
+        heapq.heappush(max_heap, (-1 * int(digit_string[i]), i))
 
     neg_first_max, first_max_index = heapq.heappop(max_heap)
 
     result += str(-neg_first_max)
     max_heap = []
 
-    for i in range(first_max_index+1, string_length):
-        heapq.heappush(max_heap, (-1*int(digit_string[i]), i))
+    for i in range(first_max_index + 1, string_length):
+        heapq.heappush(max_heap, (-1 * int(digit_string[i]), i))
     result += str(-heapq.heappop(max_heap)[0])
     print(result)
     return int(result)
+
 
 def total_output_joltage():
     number_strings = get_input()
@@ -49,6 +52,7 @@ print(total_output_joltage())
 # O(n) SOLUTION - Optimized version
 # Uses two linear scans instead of heaps to find max digits
 # ============================================================
+
 
 def calculate_joltage_optimized(digit_string: str):
     string_length = len(digit_string)
@@ -75,6 +79,7 @@ def calculate_joltage_optimized(digit_string: str):
     print(result)
     return result
 
+
 def total_output_joltage_optimized():
     number_strings = get_input()
     total_joltage = 0
@@ -86,6 +91,3 @@ def total_output_joltage_optimized():
 
 # Uncomment to run optimized version:
 # print(total_output_joltage_optimized())
-
-
-
