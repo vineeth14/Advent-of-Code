@@ -12,6 +12,11 @@ We know we'll always use the left-most battery of the highest power-level in the
 Then we want to maximise the joltage from the batteries to the right of m, and we have d-1 batteries left to choose. 
 So we make a recursive call to j(b[m+1:], d - 1). The base case occurs when d=1, where we are just picking any of the most powerful batteries.
 
+# we want a function that given a string:-batteries and length d 
+# it needs to return the max such that d-1 remains in length of string
+"""
+
+
 def get_input(filename="input.txt"):
     filepath = os.path.join(BASE_DIR, filename)
     number_strings = []
@@ -21,26 +26,23 @@ def get_input(filename="input.txt"):
     return number_strings
 
 
-# we want a function that given a string:-batteries and length d 
-# it needs to return the max such that d-1 remains in length of string
-"""
 def process_batteries(d, battery):
     if d == 1:
         return max(battery)
 
-    partition_idx = len(battery) - (d-1)
+    partition_idx = len(battery) - (d - 1)
     index = battery.index(max(battery[:partition_idx]))
     max_b = battery[index]
 
-    return max_b + process_batteries(d-1,battery[index+1:])
+    return max_b + process_batteries(d - 1, battery[index + 1 :])
 
 
 def solution():
     batteries = get_input()
     total = 0
     for battery in batteries:
-        total += int(process_batteries(12,battery))
+        total += int(process_batteries(12, battery))
     return total
+
+
 print(solution())
-
-
